@@ -48,8 +48,8 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
 production:
   <<: *default
-  database: protospace_テックマスターのuser_id_production
-  username: protospace_テックマスターのuser_id
-  password: <%= ENV["PROTOSPACE_テックマスターのUSER_ID_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
