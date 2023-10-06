@@ -47,15 +47,15 @@ class PrototypesController < ApplicationController
 
     def room_params
         params.require(:prototype).permit(:image, :title,:catch_copy,:concept).merge(user_id: current_user.id)
-      end
+    end
 
       def set_prototype
         @prototype = Prototype.find(params[:id])
       end
 
       def move_to_index
-        unless user_signed_in?
+        unless user_signed_in? && current_user.id == prototype.user_id 
           redirect_to action: :index
-        end
+        end 
       end
 end
